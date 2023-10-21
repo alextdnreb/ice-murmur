@@ -6,14 +6,11 @@ import { Murmur } from "./generated/Murmur";
   try {
     communicator = Ice.initialize();
     const proxy = communicator.stringToProxy("Meta:tcp -h localhost -p 6502");
-    const meta = await Murmur.MetaPrx.checkedCast(proxy); //
-    // Down-cast the proxy to the hello object interface and invoke
-    // the sayHello method.
-    //
-    const server = await meta.newServer();
-    server.start();
+    const meta = await Murmur.MetaPrx.checkedCast(proxy);
+    // const server = await meta.newServer();
+    // server.start();
 
-    console.log(server.id());
+    // console.log(server.id());
   } catch (ex) {
     console.log(ex.toString());
   } finally {
